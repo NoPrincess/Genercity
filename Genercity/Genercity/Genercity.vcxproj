@@ -146,6 +146,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fuck.h" />
+    <ClInclude Include="heteroList.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="list_iterator.h" />
+    <ClInclude Include="my_stack.h" />
+    <ClInclude Include="my_vector.h" />
+    <ClInclude Include="set.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="tree_iterator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
