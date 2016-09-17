@@ -63,7 +63,7 @@ public:
 	void erase(iterator &it)
 	{
 		node_type *n = it.pos;
-		it++;
+		++it;
 		if (n)
 		{
 			if (n->next)

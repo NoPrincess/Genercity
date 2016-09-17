@@ -28,6 +28,7 @@ public:
 	{
 		if (pos)
 			pos = pos->next;
+		return *this;
 	}
 	reference_type operator* () throw (std::runtime_error)
 	{

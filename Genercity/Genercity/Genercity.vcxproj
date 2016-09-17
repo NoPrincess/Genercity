@@ -149,6 +149,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithms.h" />
     <ClInclude Include="fuck.h" />
     <ClInclude Include="heteroList.h" />
     <ClInclude Include="list.h" />

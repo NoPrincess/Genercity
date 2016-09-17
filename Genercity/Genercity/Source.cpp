@@ -3,6 +3,7 @@
 #include "my_vector.h"
 #include "list.h"
 #include "tree_iterator.h"
+#include "algorithms.h"
 #include <string>
 
 void test1_1();
@@ -13,10 +14,11 @@ void test1_4();
 void test1_5();
 void testMyVector();
 void test1_6();
+void testIterator();
 
 int main()
 {
-	testMyVector();
+	testIterator();
 	system("PAUSE");
 	return 0;
 }
@@ -124,5 +126,23 @@ void testMyVector()
 void test1_6()
 {
 	print<100>();
+}
+
+void testIterator()
+{
+	list<int> la, lb;
+	for (int i = 0; i < 7; i++)
+	{
+		la.push_front(i * 2 % 7);
+		lb.push_front(i * 2 % 7);
+	}
+	list<int>::iterator it = July::find(lb.begin(), lb.end(), 3);
+	la.erase(it);    //容器与迭代器不一致，不涉及修改容器的链表头指针。
+	July::print(la.begin(), la.end());
+	July::print(lb.begin(), lb.end());
+	it = July::find(lb.begin(), lb.end(), 5);
+	la.erase(it);   //容器与迭代器不一致，且需要修改容器的链表头指针。
+	July::print(la.begin(), la.end());
+	July::print(lb.begin(), lb.end());
 }
 
