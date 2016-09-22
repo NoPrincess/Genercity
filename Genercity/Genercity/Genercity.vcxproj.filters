@@ -50,5 +50,8 @@
     <ClInclude Include="algorithms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="object_pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

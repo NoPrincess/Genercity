@@ -156,6 +156,7 @@
     <ClInclude Include="list_iterator.h" />
     <ClInclude Include="my_stack.h" />
     <ClInclude Include="my_vector.h" />
+    <ClInclude Include="object_pool.h" />
     <ClInclude Include="set.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tree_iterator.h" />
