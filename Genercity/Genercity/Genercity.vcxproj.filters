@@ -53,5 +53,8 @@
     <ClInclude Include="object_pool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pool_allocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
