@@ -28,5 +28,24 @@ namespace July
 				return static_cast<void*>(operator new (n));
 			else return pool[(n + align - 1) / align - 1].allocate();
 		}
+
+		void base_deallocate(void* ptr, size_t n)
+		{
+			if (n > max_size)
+				operator delete(ptr);
+			else
+				pool[(n + align - 1) / align - 1].deallocate(ptr);
+		}
+
+		static size_t recycle()
+		{
+			size_t recycled_bytes = 0;
+			for (size_t i = 1; i < pool.size(); i++)
+			{
+				recycled_bytes += pool[i].recycle();
+			}
+			return recycled_bytes;
+		}
 	};
+
 }
