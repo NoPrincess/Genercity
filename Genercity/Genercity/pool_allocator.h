@@ -47,5 +47,75 @@ namespace July
 			return recycled_bytes;
 		}
 	};
+	inline size_t pool_allocator_recycle()
+	{
+		return pool_allocator_base::recycle();
+	}
+	template<typename T>
+	class pool_allocator : private pool_allocator_base
+	{
+	public:
+		typedef size_t size_type;
+		typedef ptrdiff_t different_type;
+		typedef T* pointer;
+		typedef const T* const_pointer;
+		typedef T& reference;
+		typedef const T& const_reference;
+		typedef T value_type;
 
+		//rebind模板
+		template<typename T1>
+		struct rebind
+		{
+			typedef pool_allocator<T1> other;
+		};
+
+		pool_allocator() throw() {}
+		pool_allocator(pool_allocator const&) throw {}
+		template<typename T1>
+		pool_allocator(pool_allocator<T1> const&) throw {}
+		~pool_allocator() throw() {}
+
+		pointer address(reference r) const
+		{
+			return &r;
+		}
+		const_pointer address(const_reference r) const
+		{
+			return &r;
+		}
+
+		size_type max_size() const throw()
+		{
+			return size_t(-1) / sizeof(T);
+		}
+
+		void construct(pointer ptr, const_reference v)
+		{
+			//定位构造
+			new ((void*)ptr) T(v);
+		}
+		//只析构，不释放内存
+		void destory(pointer ptr)
+		{
+			ptr->~T();
+		}
+		pointer allocate(size_type n, const void* = 0) throw(std::bad_alloc)
+		{
+			return static_cast<pointer>(base_allocate(n * sizeof(T)));
+		}
+
+		void deallocate(pointer ptr, size_type n)
+		{
+			return base_deallocate(ptr, n * sizeof(T));
+		}
+	};
+
+	template<typename T>
+	inline bool operator==(const pool_allocator<T>&, const pool_allocator<T>&) { return true; }
+
+	template<typename T>
+	inline bool operator!=(const pool_allocator<T>&, const pool_allocator<T>&) { return false; }
+
+	object_pool_array pool_allocator_base::pool(pool_allocator_base::pool_size, pool_allocator_base::align);
 }
