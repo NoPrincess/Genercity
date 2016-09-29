@@ -90,7 +90,7 @@ namespace July
 	template<typename T0, typename T1>
 	inline T0* byte_shift(T1* ptr, size_t b)
 	{
-		return reinterpret_cast<T0*>(reinterpret_cast<char*)(ptr) + b);
+		return reinterpret_cast<T0*>(reinterpret_cast<char*>(ptr) + b);
 	}
 
 	void* object_pool::allocate() throw(std::bad_alloc)
@@ -118,7 +118,7 @@ namespace July
 
 	void object_pool::deallocate(void* ptr)
 	{
-		free_node *f = byte_shift<free_node>(ptr, -1 * free_node_offset);
+		free_node *f = byte_shift<free_node>(ptr, (size_t)-1 * free_node_offset);
 		f->next = free_node_head;
 		free_node_head = f;
 	}
@@ -126,7 +126,7 @@ namespace July
 	size_t object_pool::recycle()
 	{
 		size_t *shift_table = new size_t[num_nodes_per_chunk];
-		shift_table[0] = -1 * chunk_data_size;
+		shift_table[0] = (size_t)-1 * chunk_data_size;
 		for (size_t i = 1; i < num_nodes_per_chunk; i++)
 		{
 			shift_table[i] = shift_table[i - 1] - free_node_size;

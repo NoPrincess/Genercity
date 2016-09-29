@@ -159,6 +159,7 @@
     <ClInclude Include="object_pool.h" />
     <ClInclude Include="pool_allocator.h" />
     <ClInclude Include="set.h" />
+    <ClInclude Include="some_test_func.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="test_suite.h" />
     <ClInclude Include="tree_iterator.h" />

@@ -71,9 +71,9 @@ namespace July
 		};
 
 		pool_allocator() throw() {}
-		pool_allocator(pool_allocator const&) throw {}
+		pool_allocator(pool_allocator const&) throw() {}
 		template<typename T1>
-		pool_allocator(pool_allocator<T1> const&) throw {}
+		pool_allocator(pool_allocator<T1> const&) throw() {}
 		~pool_allocator() throw() {}
 
 		pointer address(reference r) const

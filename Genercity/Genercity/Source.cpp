@@ -1,9 +1,9 @@
 #include "test.h"
 #include "heteroList.h"
 #include "my_vector.h"
-#include "list.h"
 #include "tree_iterator.h"
 #include "algorithms.h"
+#include "some_test_func.h"
 #include <string>
 
 void test1_1();
@@ -18,7 +18,7 @@ void testIterator();
 
 int main()
 {
-	testIterator();
+	test_pool_allocate();
 	system("PAUSE");
 	return 0;
 }

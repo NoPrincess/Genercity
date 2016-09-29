@@ -15,7 +15,7 @@ struct insert_to_list
 		typedef typename L::value_type value_type;
 		for (size_t i = 0; i < num_elements; i++)
 		{
-			list.push_back(value_type);
+			list.push_back(value_type());
 		}
 	}
 };
@@ -30,9 +30,9 @@ struct random_delete
 	random_delete(L &list, unsigned seed = 0, float ratio = 0.2) : list(list), seed(seed), threshold(1024 * ratio) {}
 	void operator() () const
 	{
-		for (iterator i = list.begin(), i != list.end(); )
+		for (iterator i = list.begin(); i != list.end(); )
 		{
-			if ((*rand() & 0x3ff) < threshold)
+			if ((rand() & 0x3ff) < threshold)
 				i++;
 			else i = list.erase(i);
 		}
